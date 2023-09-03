@@ -1,9 +1,12 @@
+import WhoAreWe from "../WhoAreWe/WhoAreWe";
 import "./About.css";
 
 function About(): JSX.Element {
 	return (
 		<div className="About">
-			<p>About</p>
+			<p>
+				<WhoAreWe></WhoAreWe>
+			</p>
 		</div>
 	);
 }
