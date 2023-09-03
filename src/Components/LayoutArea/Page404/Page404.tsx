@@ -7,7 +7,7 @@ function Page404(): JSX.Element {
 			<iframe
 				width="560"
 				height="315"
-				src="https://www.youtube.com/embed/t3otBjVZzT0?autoplay=true"
+				src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=XzNkUElffnCpZ0cN?autoplay=true"
 				allow="autoplay"
 				title="Page not Found"
 			></iframe>
