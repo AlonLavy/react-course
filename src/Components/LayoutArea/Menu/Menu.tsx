@@ -13,6 +13,9 @@ function Menu(): JSX.Element {
 			<NavLink to="/about">
 				<p>About</p>
 			</NavLink>
+			<NavLink to="/contact">
+				<p>Contact Us</p>
+			</NavLink>
 		</div>
 	);
 }
