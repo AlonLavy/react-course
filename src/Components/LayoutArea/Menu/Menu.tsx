@@ -1,17 +1,18 @@
+import { NavLink } from "react-router-dom";
 import "./Menu.css";
 
 function Menu(): JSX.Element {
 	return (
 		<div className="Menu">
-			<a href="/home">
+			<NavLink to="/home">
 				<p>Home</p>
-			</a>
-			<a href="/products">
+			</NavLink>
+			<NavLink to="/products">
 				<p>Products</p>
-			</a>
-			<a href="/about">
+			</NavLink>
+			<NavLink to="/about">
 				<p>About</p>
-			</a>
+			</NavLink>
 		</div>
 	);
 }
