@@ -8,3 +8,7 @@ body,
 	background-image: linear-gradient(45deg, #cad2c5, #354f52);
 	color: #2f3e46;
 }
+
+a {
+	color: #0000ff;
+}
