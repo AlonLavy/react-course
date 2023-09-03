@@ -3,13 +3,13 @@ import "./Menu.css";
 function Menu(): JSX.Element {
 	return (
 		<div className="Menu">
-			<a href="">
-				<p>Hello</p>
+			<a href="/home">
+				<p>Home</p>
 			</a>
-			<a href="">
-				<p>Product</p>
+			<a href="/products">
+				<p>Products</p>
 			</a>
-			<a href="">
+			<a href="/about">
 				<p>About</p>
 			</a>
 		</div>
