@@ -1,9 +1,8 @@
-import { Router } from "express";
+import Routing from "../../Routing/Routing/Routing";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Menu from "../Menu/Menu";
 import "./Layout.css";
-import Routing from "../../Routing/Routing/Routing";
 
 function Layout(): JSX.Element {
 	return (
