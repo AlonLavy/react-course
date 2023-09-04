@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import WhoAreWe from "../WhoAreWe/WhoAreWe";
 import "./About.css";
+import RandomImage from "../RandomImage/RandomImage";
 
 function About(): JSX.Element {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -47,6 +48,8 @@ function About(): JSX.Element {
 			</button>
 
 			<span>{clock}</span>
+
+			<RandomImage />
 		</div>
 	);
 }

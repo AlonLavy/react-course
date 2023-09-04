@@ -9,6 +9,7 @@ import img3 from "../../../Assets/product3.jpg";
 import img4 from "../../../Assets/product4.jpg";
 import img5 from "../../../Assets/product5.jpg";
 import "./Home.css";
+import Search from "../Search/Search";
 
 function Home(): JSX.Element {
 	const [counter, setCounter] = useState(0);
@@ -64,6 +65,8 @@ function Home(): JSX.Element {
 				})}
 			</div>
 			<p>{today === 5 || today === 6 ? "Weekend Sale" : "Weekday Sale"}</p>
+
+			<Search />
 		</div>
 	);
 }
