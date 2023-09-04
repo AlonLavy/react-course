@@ -32,12 +32,13 @@ function Home(): JSX.Element {
 		<div className="Home">
 			<p>Home</p>
 			<br />
-			<Switch
-				checked={counter % 2 === 1 ? false : true}
-				onChange={() => {
+			<button
+				onClick={() => {
 					setCounter(counter + 1);
 				}}
-			/>
+			>
+				Change Image
+			</button>
 			<p>Clicked: {counter}</p>
 			<br />
 			<img src={counter % 2 === 1 ? fruitsAndVeggies : drinks}></img>
