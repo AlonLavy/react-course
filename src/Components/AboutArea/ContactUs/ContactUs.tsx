@@ -1,11 +1,13 @@
+import useTitle from "../../../Utils/UseTitle";
 import "./ContactUs.css";
 
 function ContactUs(): JSX.Element {
-	return (
-		<div className="ContactUs">
-			<p>Contact us!</p>
-		</div>
-	);
+  useTitle("Northwind | Contact");
+  return (
+    <div className="ContactUs">
+      <p>Contact us!</p>
+    </div>
+  );
 }
 
 export default ContactUs;

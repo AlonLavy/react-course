@@ -1,29 +1,31 @@
-import { createContext, useEffect, useState } from "react";
-import "./ProductList.css";
-import productsService from "../../../Services/ProductsServices";
+import { useEffect, useState } from "react";
 import ProductModel from "../../../Models/ProductModel";
+import productsService from "../../../Services/ProductsServices";
 import ProductCard from "../../ProductsArea/ProductCard/ProductCard";
+import "./ProductList.css";
+import useTitle from "../../../Utils/UseTitle";
 
 function ProductList(): JSX.Element {
-	const [allProducts, setAllProducts] = useState<Array<ProductModel>>([]);
-	useEffect(() => {
-		productsService
-			.getAllProducts()
-			.then((products) => {
-				setAllProducts(products);
-			})
-			.catch((error) => alert(error.message));
-	}, []);
+  useTitle("Northwind | Product");
+  const [allProducts, setAllProducts] = useState<Array<ProductModel>>([]);
+  useEffect(() => {
+    productsService
+      .getAllProducts()
+      .then((products) => {
+        setAllProducts(products);
+      })
+      .catch((error) => alert(error.message));
+  }, []);
 
-	return (
-		<div className="ProductList">
-			{allProducts.map((product) => (
-				<>
-					<ProductCard product={product} />
-				</>
-			))}
-		</div>
-	);
+  return (
+    <div className="ProductList">
+      {allProducts.map((product) => (
+        <>
+          <ProductCard product={product} />
+        </>
+      ))}
+    </div>
+  );
 }
 
 export default ProductList;

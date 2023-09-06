@@ -1,10 +1,10 @@
 .Menu p {
-	font-family: "Trebuchet MS", sans-serif;
-	font-size: larger;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: larger;
 }
 
 .Menu > .active {
-	color: #00ff00;
-	font-weight: bold;
-	font-family: "Trebuchet MS", sans-serif;
+  color: #00ff00;
+  font-weight: bold;
+  font-family: "Trebuchet MS", sans-serif;
 }
