@@ -1,6 +1,8 @@
 import ProductModel from "../Models/ProductModel";
 import axios from "axios";
 import appConfig from "../Utils/AppConfig";
+import { appStore } from "../Redux/AppState";
+import { productActions } from "../Redux/ProductsSlice";
 
 class ProductsService {
 	public async updateProduct(product: ProductModel, productId: number) {
@@ -16,10 +18,12 @@ class ProductsService {
 	}
 
 	public async getAllProducts(): Promise<Array<ProductModel>> {
-		const response = await axios.get<Array<ProductModel>>(
-			appConfig.productsURL
-		);
-		return response.data;
+		const products =
+			appStore.getState().products.length === 0
+				? (await axios.get<Array<ProductModel>>(appConfig.productsURL)).data
+				: appStore.getState().products;
+		appStore.dispatch(productActions.setAll(products));
+		return products;
 	}
 
 	public async getOneProduct(id: number): Promise<ProductModel> {
@@ -37,10 +41,16 @@ class ProductsService {
 			options
 		);
 		const addedProduct = response.data;
+		appStore.dispatch(productActions.addOne(addedProduct));
 	}
 
 	public async deleteProduct(id: number): Promise<void> {
-		await axios.delete(appConfig.productsURL + id.toString());
+		await axios
+			.delete(appConfig.productsURL + id.toString())
+			.then(() => {
+				appStore.dispatch(productActions.deleteOne(id));
+			})
+			.catch((error: any) => alert(error.message));
 	}
 }
 

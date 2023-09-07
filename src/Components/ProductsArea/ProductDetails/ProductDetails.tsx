@@ -4,6 +4,7 @@ import ProductModel from "../../../Models/ProductModel";
 import productsService from "../../../Services/ProductsServices";
 import "./ProductDetails.css";
 import ProductsService from "../../../Services/ProductsServices";
+import { appStore } from "../../../Redux/AppState";
 
 function ProductDetails(): JSX.Element {
 	const params = useParams();
@@ -13,7 +14,15 @@ function ProductDetails(): JSX.Element {
 		(async () => {
 			try {
 				const id = +params.id;
-				const product = await productsService.getOneProduct(id);
+				// const product = await productsService.getOneProduct(id);
+				const product =
+					appStore.getState().products.length !== 0
+						? appStore.getState().products[
+								appStore
+									.getState()
+									.products.findIndex((product) => product.id === id)
+						  ]
+						: await productsService.getOneProduct(id);
 				setProduct(product);
 			} catch (error: any) {
 				alert(error.message);

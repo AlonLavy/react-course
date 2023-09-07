@@ -4,6 +4,7 @@ import "./EditProduct.css";
 import productsService from "../../../Services/ProductsServices";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { appStore } from "../../../Redux/AppState";
 
 function EditProduct(): JSX.Element {
 	const { register, handleSubmit, formState, setValue, watch } =
@@ -12,16 +13,28 @@ function EditProduct(): JSX.Element {
 	const params = useParams<{ id: string }>();
 	useEffect(() => {
 		const id = +params.id;
-		productsService
-			.getOneProduct(id)
-			.then((product) => {
-				setValue("name", product.name);
-				setValue("price", product.price);
-				setValue("stock", product.stock);
-				setValue("id", id);
-				setValue("imageUrl", product.imageUrl);
-			})
-			.catch((error) => alert(error.message));
+		if (appStore.getState().products.length === 0) {
+			productsService
+				.getOneProduct(id)
+				.then((product) => {
+					setValue("name", product.name);
+					setValue("price", product.price);
+					setValue("stock", product.stock);
+					setValue("id", id);
+					setValue("imageUrl", product.imageUrl);
+				})
+				.catch((error) => alert(error.message));
+		} else {
+			const product =
+				appStore.getState().products[
+					appStore.getState().products.findIndex((product) => product.id === id)
+				];
+			setValue("name", product.name);
+			setValue("price", product.price);
+			setValue("stock", product.stock);
+			setValue("id", id);
+			setValue("imageUrl", product.imageUrl);
+		}
 	}, []);
 
 	const send = async (product: ProductModel) => {
