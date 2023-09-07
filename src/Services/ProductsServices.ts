@@ -25,6 +25,18 @@ class ProductsService {
 		appStore.dispatch(productActions.setAll(products));
 		return products;
 	}
+	public async getTopThreeProducts(): Promise<Array<ProductModel>> {
+		const products = (
+			await axios.get<Array<ProductModel>>(appConfig.topProductsURL)
+		).data;
+		return products;
+	}
+	public async getOutOfStockProducts(): Promise<Array<ProductModel>> {
+		const products = (
+			await axios.get<Array<ProductModel>>(appConfig.outOfStockURL)
+		).data;
+		return products;
+	}
 
 	public async getOneProduct(id: number): Promise<ProductModel> {
 		const response = await axios.get<ProductModel>(appConfig.productsURL + id);

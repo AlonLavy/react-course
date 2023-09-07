@@ -5,17 +5,15 @@ import ProductCard from "../../ProductsArea/ProductCard/ProductCard";
 import "./ProductList.css";
 import useTitle from "../../../Utils/UseTitle";
 import Spinner from "../../SharedArea/Spinner/Spinner";
+import { useSelector } from "react-redux";
+import { AppState } from "../../../Redux/AppState";
+import TotalProducts from "../../ProductsArea/TotalProducts/TotalProducts";
 
 function ProductList(): JSX.Element {
 	useTitle("Northwind | Product");
-	const [allProducts, setAllProducts] = useState<Array<ProductModel>>([]);
+	const allProducts = useSelector((appState: AppState) => appState.products);
 	useEffect(() => {
-		productsService
-			.getAllProducts()
-			.then((products) => {
-				setAllProducts(products);
-			})
-			.catch((error) => alert(error.message));
+		productsService.getAllProducts().catch((error) => alert(error.message));
 	}, []);
 
 	return (
@@ -26,6 +24,8 @@ function ProductList(): JSX.Element {
 					<ProductCard product={product} />
 				</>
 			))}
+
+			<TotalProducts />
 		</div>
 	);
 }

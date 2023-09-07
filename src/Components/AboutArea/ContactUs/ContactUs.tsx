@@ -1,7 +1,7 @@
 import useTitle from "../../../Utils/UseTitle";
 import "./ContactUs.css";
 
-function ContactUs(): JSX.Element {
+const ContactUs = (): JSX.Element => {
   useTitle("Northwind | Contact");
   return (
     <div className="ContactUs">

@@ -2,7 +2,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import "./Routing.css";
 import Home from "../../HomeArea/Home/Home";
 import ProductList from "../../ProductArea/ProductList/ProductList";
-// import About from "../../AboutArea/About/About";
 import Page404 from "../../LayoutArea/Page404/Page404";
 import ContactUs from "../../AboutArea/ContactUs/ContactUs";
 import ProductDetails from "../../ProductsArea/ProductDetails/ProductDetails";
@@ -11,6 +10,10 @@ import { Suspense, lazy } from "react";
 import Spinner from "../../SharedArea/Spinner/Spinner";
 import AddProduct from "../../ProductsArea/AddProduct/AddProduct";
 import EditProduct from "../../ProductsArea/EditProduct/EditProduct";
+import Register from "../../AuthArea/Register/Register";
+import Login from "../../AuthArea/Login/Login";
+import TopProducts from "../../ProductsArea/TopProducts/TopProducts";
+import OutOfStock from "../../ProductsArea/OutOfStock/OutOfStock";
 
 function Routing(): JSX.Element {
 	const LazyAbout = lazy(() => import("../../AboutArea/About/About"));
@@ -35,6 +38,10 @@ function Routing(): JSX.Element {
 				<Route path="/products/add" element={<AddProduct />} />
 				<Route path="/employees" element={<EmployeeList />} />
 				<Route path="/products/edit/:id" element={<EditProduct />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/products/top" element={<TopProducts />} />
+				<Route path="/products/out" element={<OutOfStock />} />
 			</Routes>
 		</div>
 	);

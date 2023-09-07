@@ -7,57 +7,58 @@ import RandomImage from "../RandomImage/RandomImage";
 import Tune from "../Tune/Tune";
 import useTitle from "../../../Utils/UseTitle";
 import Greetings from "../../SharedArea/Greetings/Greetings";
+import TotalProducts from "../../ProductsArea/TotalProducts/TotalProducts";
 
-function About(): JSX.Element {
-  useTitle("Northwind | About");
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [time, setTime] = useState<string>(null as unknown as string);
-  const [clock, setClock] = useState<string>("");
-  const navigator = useNavigate();
+const About = (): JSX.Element => {
+	useTitle("Northwind | About");
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const [time, setTime] = useState<string>(null as unknown as string);
+	const [clock, setClock] = useState<string>("");
+	const navigator = useNavigate();
 
-  const [topProduct, setTopProduct] = useState("---");
-  const displayTopProduct = (): void => {
-    setTopProduct("Ice coffee");
-  };
+	const [topProduct, setTopProduct] = useState("---");
+	const displayTopProduct = (): void => {
+		setTopProduct("Ice coffee");
+	};
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setClock(new Date().toLocaleTimeString());
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setClock(new Date().toLocaleTimeString());
+		}, 1000);
+		return () => {
+			clearInterval(interval);
+		};
+	}, []);
 
-  return (
-    <div className="About">
-      <Greetings hour={new Date().getHours()} />
+	return (
+		<div className="About">
+			<Greetings hour={new Date().getHours()} />
 
-      <WhoAreWe />
+			<WhoAreWe />
 
-      <button onClick={() => setIsOpen(true)}>Show Current Date</button>
-      <Snackbar
-        open={isOpen}
-        autoHideDuration={2500}
-        message={new Date().toLocaleDateString()}
-        onClose={() => setIsOpen(false)}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      />
-      <button onClick={() => navigator("/home")}>Back Home</button>
-      <button onClick={displayTopProduct}>Display top product</button>
-      <span>{topProduct}</span>
+			<button onClick={() => setIsOpen(true)}>Show Current Date</button>
+			<Snackbar
+				open={isOpen}
+				autoHideDuration={2500}
+				message={new Date().toLocaleDateString()}
+				onClose={() => setIsOpen(false)}
+				anchorOrigin={{ vertical: "top", horizontal: "center" }}
+			/>
+			<button onClick={() => navigator("/home")}>Back Home</button>
+			<button onClick={displayTopProduct}>Display top product</button>
+			<span>{topProduct}</span>
 
-      <button onClick={() => setTime(new Date().toLocaleTimeString())}>
-        {time === null ? "Show Current Time" : time}
-      </button>
+			<button onClick={() => setTime(new Date().toLocaleTimeString())}>
+				{time === null ? "Show Current Time" : time}
+			</button>
 
-      <span>{clock}</span>
+			<span>{clock}</span>
 
-      <RandomImage />
+			<RandomImage />
 
-      <Tune />
-    </div>
-  );
+			<Tune />
+		</div>
+	);
 }
 
 export default About;
